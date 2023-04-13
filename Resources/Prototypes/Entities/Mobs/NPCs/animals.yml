@@ -1589,6 +1589,67 @@
     price: 200
 
 - type: entity
+  name: robotic corgi
+  parent: SimpleMobBase
+  id: MobRoboticCorgi
+  description: Finally, a space robotic corgi!
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Mobs/Pets/robocorgi.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: robocorgi
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+    - shape:
+        !type:PhysShapeCircle
+        radius: 0.35
+      density: 30
+      mask:
+      - MobMask
+      layer:
+      - MobLayer
+  - type: Inventory
+    speciesId: dog
+    templateId: pet
+  - type: InventorySlots
+  - type: Strippable
+  - type: UserInterface
+    interfaces:
+    - key: enum.StrippingUiKey.Key
+      type: StrippableBoundUserInterface
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: robocorgi
+      Critical:
+        Base: robocorgi_dead
+      Dead:
+        Base: robocorgi_dead
+  - type: Appearance
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 2
+  - type: ReplacementAccent
+    accent: dog
+  - type: InteractionPopup
+    interactSuccessString: petting-success-dog
+    interactFailureString: petting-failure-generic
+    interactSuccessSound:
+      path: /Audio/Animals/small_dog_bark_happy.ogg
+  - type: Grammar
+    attributes:
+      gender: epicene
+  - type: SentienceTarget
+    flavorKind: station-event-random-sentience-flavor-corgi
+  - type: Puller
+  - type: MobPrice
+    price: 350
+
+- type: entity
   name: corrupted corgi
   parent: MobCorgi
   id: MobCorgiNarsi
